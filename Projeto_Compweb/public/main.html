@@ -1,0 +1,469 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="sidebar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script type="text/javascript" src="editor.js"></script>
+    <script type="text/javascript" src="cookieeater.js"></script>
+    <script type="text/javascript" src="aba.js"></script>
+    <script type="text/javascript" src="PDF.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+
+
+    <!-- Google fonts link -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+
+    
+    <title>To-do list</title>
+  </head>
+  <body>
+    <header> <!-- nav -->
+      <a onclick=location.reload(); > <img src="icons/home.png" class="header iconsl"> </a>
+      <div id="yau" class="header iconsl"></div>
+      <a onclick="eatcookies()" href="Index.html"> <img src="../icons/exit.png" class="header iconsr"> </a>
+    </header>
+    <div class="flex-container">
+      <section class="secondary-section"> <!-- amigos -->
+      <div id="acti_school">
+          <div id=icon>
+          </div>
+          Escola
+          <p id="info2">Aqui pode ver as atividades relacionadas com a Escola</p>
+      </div>
+      <div id="acti_gym">
+        <div id=icon>
+        </div>
+        Ginásio
+        <p id="info2">Aqui pode ver as atividades relacionadas com o Ginásio</p>
+    </div>
+    <div id="acti_home">
+    <div id=icon>
+      </div>
+      Casa
+      <p id="info2">Aqui pode ver as atividades relacionadas com a Casa</p>
+    </div>
+
+    <button id="pdfButton1">PDF tarefas Escola</button>
+    <button id="pdfButton2">PDF tarefas Ginásio</button>
+    <button id="pdfButton3">PDF tarefas Casa</button>
+    
+      </section>
+      <section class="main-section">
+        <div id="escola">
+          <div id="muro2">
+            <h1 class="puxa">Testes</h1>
+            <br>
+            <form method="POST" action="/api/task/post" id="um">
+              <input type="text" class="tasks" name="tasks">
+              <button type="submit" value="Submit" id="yau" >Adicionar</button>
+            </form>
+            <br>
+            <script>
+              $(document).ready(function() {
+                // Assuming you have an API endpoint that returns an array of tasks
+                const apiUrl = 'http://localhost:3000/api/task/getTasksByIdSchool';
+                const userData = Cookies.get('userData');
+                const user = JSON.parse(userData);
+            
+                // Fetch tasks from the API and add them to the tasklist
+                async function fetchAndAddTasks() {
+                  try {
+                    const response = await fetch(apiUrl);
+                    const tasks = await response.json();
+            
+                    const taskListElement = document.getElementById('tasklist1');
+            
+                    // Clear existing content of the tasklist
+                    taskListElement.innerHTML = '';
+
+                    
+                    tasks.forEach(task => {
+                      const h4Element = document.createElement('h4');
+                      const buttona = document.createElement('button');
+                      /* buttona.style.display = "inline-block"; */
+                      buttona.style.width = "15px";
+                      buttona.style.height = "15px";
+                      buttona.style.float = "right"
+                      buttona.style.marginTop = "-27px"
+      
+                      buttona.onclick = () => {
+
+
+                        // Send a DELETE request to the API endpoint
+                        fetch('http://localhost:3000/api/task/deleteById/' + task._id, {
+                          method: 'DELETE'
+                        })
+                          .then(response => {
+                            console.log(response)
+                            if (response.ok) {
+                              console.log('Task deleted successfully');
+                              location.reload(); 
+                            } else {
+                              console.error('Failed to delete task');
+                            }
+                          })
+                          .catch(error => {
+                            console.error('Error deleting task:', error);
+                          });
+                      }
+                      h4Element.textContent = task.tasks;
+                      taskListElement.appendChild(h4Element);
+                      if (user.username === "sraprof") {
+                      taskListElement.appendChild(buttona)
+                      };
+                      
+                    });
+                    
+            
+                  } catch (error) {
+                    console.error('Error fetching tasks:', error);
+                  }
+                }
+                // Call the fetchAndAddTasks function to populate the tasklist
+                fetchAndAddTasks();
+              });
+            </script>
+            <div id="tasklist1">
+              
+            </div>
+
+          </div>
+          
+          
+        </div>
+        <div id="gym">
+          <div id="muro">
+            <h1>Plano de Treino</h1>
+            <br>
+            <form method="POST" action="/api/task/post" id="dois">
+              <input type="text" class="tasks" name="tasks">
+              <button type="submit" value="Submit" id="yau" >Adicionar</button>
+            </form>
+            <br>
+            <script>
+              $(document).ready(function() {
+                // Assuming you have an API endpoint that returns an array of tasks
+                const apiUrl = 'http://localhost:3000/api/task/getTasksByIdGym';
+                const userData = Cookies.get('userData');
+                const user = JSON.parse(userData);
+            
+                // Fetch tasks from the API and add them to the tasklist
+                async function fetchAndAddTasks() {
+                  try {
+                    const response = await fetch(apiUrl);
+                    const tasks = await response.json();
+            
+                    const taskListElement = document.getElementById('tasklist2');
+            
+                    // Clear existing content of the tasklist
+                    taskListElement.innerHTML = '';
+
+                    
+                    tasks.forEach(task => {
+                      const h4Element = document.createElement('h4');
+                      const buttona = document.createElement('button');
+                      buttona.style.width = "15px";
+                      buttona.style.height = "15px";
+                      buttona.style.float = "right"
+                      buttona.style.marginTop = "-30px"
+                      h4Element.style.padding= "5px"
+                      h4Element.style.fontSize= "large"
+                      buttona.onclick = () => {
+
+
+                        // Send a DELETE request to the API endpoint
+                        fetch('http://localhost:3000/api/task/deleteById/' + task._id, {
+                          method: 'DELETE'
+                        })
+                          .then(response => {
+                            console.log(response)
+                            if (response.ok) {
+                              console.log('Task deleted successfully');
+                              location.reload(); 
+                            } else {
+                              console.error('Failed to delete task');
+                            }
+                          })
+                          .catch(error => {
+                            console.error('Error deleting task:', error);
+                          });
+                      }
+                      h4Element.textContent = task.tasks;
+                      taskListElement.appendChild(h4Element);
+                      if (user.username == "jackedpt") {
+                      taskListElement.appendChild(buttona)
+                      };
+                      
+                    });
+                    
+            
+                  } catch (error) {
+                    console.error('Error fetching tasks:', error);
+                  }
+                }
+                
+                // Call the fetchAndAddTasks function to populate the tasklist
+                fetchAndAddTasks();
+              });
+            </script>
+            <div id="tasklist2">
+              
+            </div>
+            
+          </div>
+          
+        </div>
+
+        <div id="casa">
+          <div id="muro">
+            <h1>Tarefas de Casa</h1>
+            <br>
+            <form method="POST" action="/api/task/post" id="tres">
+              <input type="text" class="tasks" name="tasks">
+              <button type="submit" value="Submit" id="yau" >Adicionar</button>
+            </form>
+            <br>
+            <script>
+              $(document).ready(function() {
+                // Assuming you have an API endpoint that returns an array of tasks
+                const apiUrl = 'http://localhost:3000/api/task/getTasksByIdHome';
+                const userData = Cookies.get('userData');
+                const user = JSON.parse(userData);
+            
+                // Fetch tasks from the API and add them to the tasklist
+                async function fetchAndAddTasks() {
+                  try {
+                    const response = await fetch(apiUrl);
+                    const tasks = await response.json();
+            
+                    const taskListElement = document.getElementById('tasklist3');
+            
+                    // Clear existing content of the tasklist
+                    taskListElement.innerHTML = '';
+
+                    
+                    tasks.forEach(task => {
+                      const h4Element = document.createElement('h4');
+                      const buttona = document.createElement('button');
+                      buttona.style.width = "15px";
+                      buttona.style.height = "15px";
+                      buttona.style.float = "right"
+                      buttona.style.marginTop = "-27px"
+                      buttona.onclick = () => {
+
+
+                        // Send a DELETE request to the API endpoint
+                        fetch('http://localhost:3000/api/task/deleteById/' + task._id, {
+                          method: 'DELETE'
+                        })
+                          .then(response => {
+                            console.log(response)
+                            if (response.ok) {
+                              console.log('Task deleted successfully');
+                              location.reload(); 
+                            } else {
+                              console.error('Failed to delete task');
+                            }
+                          })
+                          .catch(error => {
+                            console.error('Error deleting task:', error);
+                          });
+                      }
+                      h4Element.textContent = task.tasks;
+                      taskListElement.appendChild(h4Element);
+                      if (user.username == "srpai") {
+                      taskListElement.appendChild(buttona)
+                      };
+                      
+                    });
+                    
+            
+                  } catch (error) {
+                    console.error('Error fetching tasks:', error);
+                  }
+                }
+                // Call the fetchAndAddTasks function to populate the tasklist
+                fetchAndAddTasks();
+              });
+            </script>
+            <div id="tasklist3">
+              
+            </div>
+            
+          </div>
+          
+          
+        </div>
+
+      </section>
+      <section class="secondary-section right"> <!-- person info -->
+        <div id="notas">Notas</div>
+        <form method="POST" action="/api/nota/postNota">
+          <input type="text" class="nota" name="nota" maxlength = "27">
+          <button type="submit" value="Submit" id="remind" >Adicionar</button>
+        </form>
+        <script>
+          $(document).ready(function() {
+            // Assuming you have an API endpoint that returns an array of tasks
+            const apiUrl = 'http://localhost:3000/api/nota/getNotasById';
+            const userData = Cookies.get('userData');
+            const user = JSON.parse(userData);
+        
+            // Fetch tasks from the API and add them to the tasklist
+            async function fetchAndAddNotas() {
+              try {
+                const response = await fetch(apiUrl);
+                const Notas = await response.json();
+        
+                const notas1 = document.getElementById('notas1');
+        
+                // Clear existing content of the tasklist
+                notas1.innerHTML = '';
+
+                const ulElement = document.createElement('ul');
+
+                Notas.forEach(nota => {
+                  const liElement = document.createElement('li');
+               
+
+                  // Append the <ul> element to the tasklist
+        
+                  const buttona = document.createElement('button');
+                  buttona.textContent = "Remover"
+                  buttona.onclick = () => {
+
+
+                    // Send a DELETE request to the API endpoint
+                    fetch('http://localhost:3000/api/nota/deleteById/' + nota._id, {
+                      method: 'DELETE'
+                    })
+                      .then(response => {
+                        console.log(response)
+                        if (response.ok) {
+                          console.log('Task deleted successfully');
+                          location.reload(); 
+                        } else {
+                          console.error('Failed to delete task');
+                        }
+                      })
+                      .catch(error => {
+                        console.error('Error deleting task:', error);
+                      });
+                  }
+
+                  liElement.textContent = nota.nota; // Assuming the task name property is 'taskName'
+                  notas1.appendChild(ulElement);
+                  ulElement.appendChild(liElement);
+                  liElement.appendChild(buttona)
+                  
+                });
+                
+              } catch (error) {
+                console.error('Error fetching tasks:', error);
+              }
+            }
+            // Call the fetchAndAddTasks function to populate the tasklist
+            fetchAndAddNotas();
+          });
+        </script>
+        <div id="notas1">
+
+        </div>
+        <div id="bottom">
+          <div class="input">
+          <input type="text " class="inputValue" placeholder="Enter Location">
+          <button class="button"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="displayWeather">
+          <h1 class="temp">----°C</h1>
+          <p class="desc">---</p>
+        </div>
+        </div>
+        
+
+        
+      </section>
+    </div>
+  </body>
+  <script>
+    const userData = Cookies.get('userData');
+
+      if (!userData) {
+        // Redirect to the index page
+        window.location.href = 'http://localhost:3000/index.html';
+      } else {
+        // Parse the user data from the JSON string
+        const user = JSON.parse(userData);
+
+        // Use the user data as needed
+        console.log(user.username);
+
+        if (user.username === "sraprof"){
+          console.log("a")
+          document.getElementById("acti_gym").style.display = "none";
+          document.getElementById("acti_home").style.display = "none";
+          document.getElementById("um").style.display = "block";
+          document.getElementById("pdfButton2").style.display = "none";
+          document.getElementById("pdfButton3").style.display = "none";
+          
+        }
+
+        if (user.username === "jackedpt"){
+          console.log("b")
+          document.getElementById("acti_school").style.display = "none";
+          document.getElementById("acti_home").style.display = "none";
+          document.getElementById("dois").style.display = "block"
+          document.getElementById("pdfButton1").style.display = "none";
+          document.getElementById("pdfButton3").style.display = "none";
+
+        }
+
+        if (user.username === "srpai"){
+          console.log("c")
+          document.getElementById("acti_gym").style.display = "none";
+          document.getElementById("acti_school").style.display = "none";
+          document.getElementById("tres").style.display = "block";
+          document.getElementById("pdfButton1").style.display = "none";
+          document.getElementById("pdfButton2").style.display = "none";
+
+        }
+
+        let button = document.querySelector('.button')
+        let inputvalue = document.querySelector('.inputValue')
+        let nameVal = document.querySelector('.name');
+        let temp = document.querySelector('.temp');
+        let desc = document.querySelector('.desc');
+
+
+        // ADDING EVENT LISTENER TO SEARCH BUTTON  
+        button.addEventListener('click', function(){
+
+            // Fection data from open weather API
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputvalue.value}&units=metric&appid=108dd9a67c96f23039937fe6f3c91963`)
+            .then(response => response.json())
+            .then(
+                displayData)
+            .catch(err => alert('Wrong City name')); 
+
+        })
+
+        // Function to diplay weather on html document
+        const displayData=(weather)=>{
+            temp.innerText=`${weather.main.temp}°C`
+            desc.innerText=`${weather.weather[0].main}`
+
+        }
+
+        
+         
+      }
+
+  </script>
+</html>

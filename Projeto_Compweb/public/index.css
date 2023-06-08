@@ -1,0 +1,514 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  header {
+    background-color: #15212c;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    top: 0;
+    height:60px;
+    display: inline;
+    z-index: 1;
+  }
+
+  header .iconsl{
+    width: auto;
+    height: 40px;
+    float: left;
+    margin-top: -10px;
+    margin-right: 25px;
+    z-index: -1;
+    cursor: pointer;
+  }
+
+  header .iconsr{
+    width: auto;
+    height: 40px;
+    float: right;
+    margin-top: -10px;
+    margin-left: 25px;
+    cursor: pointer;
+  }
+  
+  .flex-container {  /* a altura aqui rege o scroll */
+    display: flex;
+    flex: 1 1 0;
+    text-align: center;
+    height: auto;
+    top:60px;
+  }
+  
+  .flex-container h2 {
+    margin-top: 30px;
+    font-size: 2rem;
+  }
+  
+  .main-section {
+    /* background-color: #576575; */ 
+    /* background-color: #667e99; */
+    /* background-color: #a1bcc4; */
+    background-color: #A2BCE0;
+    width: calc(100% / 1.4);
+    position:absolute;
+    bottom:0;
+    right:calc(100% / 7);
+    left:calc(100% / 7);
+    top: 0px;
+    height: inherit;
+    top:60px;
+    text-align: center;
+  }
+  
+  .secondary-section {
+    /* background-color: #405163; */
+    /* background-color: #144577; */ 
+    background-color: #0B556B;
+    width: calc((100% / 7));
+    height: 100vh;
+    position: fixed;
+    top:60px;
+    border-style: solid;
+  }
+  .right{
+    /* background-color: #405163; */
+    /* background-color: #144577; */
+    background-color: #0B556B;
+    width: calc((100% / 5));
+    height: 100vh;
+    position: fixed;
+    top:60px;
+    right: 0;
+    border-style: solid;
+  }
+
+  p{
+    padding: 5px;
+  }
+
+  .search{
+    width: 45px;
+    height: 40px;
+    float: left;
+    margin-top: -10px;
+    margin-right: 25px;
+    z-index: 1;
+    background: transparent;
+    border: none !important;
+    font-size:0;
+    cursor: pointer;
+  }
+
+  #miniyau {
+    border-radius: 25px;
+    margin-top: 4px;
+    border-color: black;
+    padding: 5px;
+    width: 175px;
+    height: 40px;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: #15212c;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  .pfp{
+    width: 45px;
+    height: 40px;
+    float: right;
+    margin-top: -5px;
+    margin-left: 15px;
+    margin-right: 5px;
+    z-index: 1;
+    background: transparent;
+    border: none !important;
+    font-size:0;
+    cursor: pointer;
+  }
+
+  .username{
+    width: 300px;
+    height: 50px;
+    font-size: xx-large;
+    margin: auto;
+    padding: 10px;
+  }
+
+  .password{
+    width: 300px;
+    height: 50px;
+    font-size: xx-large;
+    margin: auto;
+    padding: 10px;
+  }
+
+  body{
+    background-color: #A2BCE0
+  }
+
+  #container{
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 20vh;
+    position: relative;
+    background-color: #0B556B;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+  }
+
+  .confirmar{
+    width: 150px;
+    margin: auto;
+    padding: 20px;
+    font-size: large;
+  }
+
+  #container > *{
+    margin: 10px;
+    border-radius: 25px;
+    border-color: transparent;
+  }
+
+  #container2{
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: -55px;
+    position: relative;
+    background-color: #0B556B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    border-color: transparent;
+    font-size: medium;
+  }
+
+  #acti_gym{
+    width: 90%;
+    background-color: #d9d9d9;
+    height: 100px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: large;
+    color: black;
+  }
+
+  #acti_gym{
+    width: 90%;
+    background-color: #d9d9d9;
+    height: 100px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: large;
+    color: black;
+    border-style: solid;
+  }
+
+  #acti_school{
+    width: 90%;
+    background-color: #d9d9d9;
+    height: 100px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: large;
+    color: black;
+    border-style: solid;
+  }
+
+  #acti_home{
+    width: 90%;
+    background-color: #d9d9d9;
+    height: 100px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: large;
+    color: black;
+    border-style: solid;
+  }
+
+  #icon{
+    border-radius: 100%;
+    background-color: #111;
+    float: left;
+    width: 70px;
+    height: 70px;
+    margin-top: 8.5px;
+  }
+
+  #info2{
+    font-weight: 100;
+    font-size: small;
+    margin-top: -2px;
+  }
+
+  #notas{
+    margin-top: 10px;
+    font-size: xx-large;
+    font-weight: bold;
+    color: white;
+  }
+
+  .sidenav h1 {
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+  }
+
+  #pfp{
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    background-color: purple;
+    margin-top: 8.5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #desc{
+    color: white;
+    margin-top: 25px;
+    text-align: center;
+  }
+
+  #top{
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(21,33,44,1) 90%);
+    width: 100%;
+    height: 60px;
+    margin-top: -60px;
+  }
+
+  .main-section h1{
+    font-size: 65px;
+  }
+
+  .main-section h3{
+    font-size: 25px;
+  }
+
+  ul {
+    margin-top: -24px;
+    margin-bottom: 5px;
+    font-size: large;
+  }
+
+  #escola{
+    display: none;
+    
+  }
+
+  #gym{
+    display: none;
+  }
+
+  #casa{
+    display: none;
+    
+  } 
+
+  #muro{
+    /* flex: 50%; */
+    padding: 10px;
+    margin-left: 30%;
+  }
+
+  #muro2{
+    /* flex: 50%; */
+    padding: 10px;
+    margin-left: 40%;
+  }
+
+  #muro2 #yau {  
+    justify-items: center;
+    height: 30px ;
+    width: auto;
+    font-size: large;
+    margin-top: 2px;
+    margin-right: -6px;
+  }
+
+  #muro2 #buttona{
+    float: right;
+    margin-top: -23px;
+    width: 15px;
+    height: 15px;
+    margin-right: 30px;
+  }
+
+  #muro2 h4 {
+    padding: 5px;
+  }
+
+  #muro #yau {  
+    justify-items: center;
+    height: 30px ;
+    width: auto;
+    font-size: large;
+    margin-top: 2px;
+    margin-right: -6px;
+  }
+
+  #muro #buttona{
+    float: right;
+    margin-top: -23px;
+    width: 15px;
+    height: 15px;
+    margin-right: 30px;
+  }
+
+  #muro h4 {
+    padding: 5px;
+  }
+
+  #sumiu{
+    display: none;
+  }
+
+  .tasks{
+    width: 400px;
+    height: 30px;
+    font-size: large;
+    margin-right: -30px;
+  }
+
+  #yau{
+    justify-items: center;
+    height: 30px ;
+    font-size: large;
+  }
+
+
+  #remind{
+    width: fit-content;
+    height: fit-content;
+    font-size: medium;
+  }
+
+  .nota{
+    width: 300px;
+  }
+
+  #um {
+    display: none;
+  }
+
+  #dois {
+    display: none;
+  }
+
+  #tres {
+    display: none;
+  }
+
+  #notas1 {
+    margin-top: 50px;
+    padding: 5px;
+  }
+
+
+  #notas1 > ul {
+    list-style-type: none;
+  }
+
+  #notas1 > ul > li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #notas1 > ul > li > button {
+    margin-left: 15px;
+    padding: 7px;
+  }
+
+  .displayWeather{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+#bottom{
+  position: fixed;
+  bottom: 0;
+  right: 100px;
+}
+
+#pdfButton1{
+  justify-content: center;
+  position: fixed;
+  bottom: 150px;
+  margin-left: -50px;
+}
+
+#pdfButton2{
+  justify-content: center;
+  position: fixed;
+  bottom: 100px;
+  margin-left: -50px;
+}
+
+#pdfButton3{
+  justify-content: center;
+  position: fixed;
+  bottom: 50px;
+  margin-left: -50px;
+}

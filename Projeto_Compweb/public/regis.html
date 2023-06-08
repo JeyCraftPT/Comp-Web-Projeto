@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="loginb.js"></script>
+    <script type="text/javascript" src="sidebar.js"></script>
+    <script type="text/javascript" src="cookieeater.js"></script>
+
+    <title>Registar</title>
+  </head>
+  <body>
+    <header> <!-- nav -->
+      <a href="main.php"> <img src="icons/home.png" class="header iconsl" href="main.html"> </a>
+      <div id="yau" class="header iconsl"></div>
+      <a onclick="eatcookies()" href="Index.html"> <img src="../icons/exit.png" class="header iconsr"> </a>
+      <button onclick="openNav()" class="pfp"> <img src="icons/user-interface.png" class="header iconsr"> </button>
+    </header>
+
+    <form id="container" method="POST" action="/api/user/Register">
+      <h2 style="font-size: xx-large; color: white;">Registar</h2>
+      <input class="username" type="text" name="username"  placeholder="username">
+      <input class="password" type="password" name="password" placeholder="********">
+      <button type="submit" class="confirmar" name="btn-entrar" value="Entrar">Confirmar</button>
+      </form>
+      
+    <div id="mySidenav" class="sidenav"> <!-- side bar -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+  </body>
+</html>
