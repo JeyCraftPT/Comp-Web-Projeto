@@ -32,7 +32,7 @@ app.use('/api/nota', NotaControllerRoutes)
 const PORT = process.env.PORT || 3000
 
 /* Link de conexão de base de dados */
-const URI = 'mongodb+srv://JeyCraftPT:123@todocluster.lyeya9n.mongodb.net/people?retryWrites=true&w=majority'
+const URI = 'mongodb+srv://YOURACCOUNTHERE@todocluster.lyeya9n.mongodb.net/people?retryWrites=true&w=majority'
 
 /* Tentar conectar a base de dados, caso contrário mostrar erro */
 
